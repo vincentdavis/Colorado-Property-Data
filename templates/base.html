@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% block body %}
+        <table>
+            <td> Winning Bid </td>
+            <td> Face Value </td>
+          <ul class=entries>
+              {% for e in entries %}
+                  <tr>
+                    <td> {{ e.Winning_Bid }} </td>
+                    <td> {{ e.Face_Value }} </td>
+                  </tr>
+              {% endfor %}
+          </ul>
+        </table>
+    {% endblock %}
+    <div id="footer">
+        {% block footer %}
+        &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>.
+        {% endblock %}
+    </div>
+</body>
+</html>
