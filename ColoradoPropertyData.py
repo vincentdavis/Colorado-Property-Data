@@ -27,12 +27,13 @@ def hello_world():
     search_query = request.args.get('q')
     if search_query:
         entries = LienAuction.select().where(LienAuction.Tax_Year == search_query)
+        #Parcel.get(Parcel.id == e.Parcel_ID).Parcel_ID
     else:
         entries = LienAuction.select().where(LienAuction.Tax_Year == 2014)
     # sample = [(s.Winning_Bid, s.Face_Value) for s in LienAuction.select().where(LienAuction.Tax_Year == 2014)]
     #entries = LienAuction.select().where(LienAuction.Tax_Year == 2014)
     #sample = [1,2,3,4,5]
-    return render_template('base.html', entries=entries)
+    return render_template('base.html', entries=entries, Parcel=Parcel)
 
 if __name__ == '__main__':
     #app.run()

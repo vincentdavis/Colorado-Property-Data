@@ -22,6 +22,7 @@
                     <td> {{ e.Winning_Bid }} </td>
                     <td> {{ e.Face_Value }} </td>
                     <td> {{ e.Tax_Year }} </td>
+                    <td> {{ Parcel.get(Parcel.id == e.Parcel_ID).Parcel_ID }}</td>
                   </tr>
               {% endfor %}
           </ul>
