@@ -15,7 +15,7 @@ def DB_INIT(remove=False, loaddata=False):
         except:
             pass
         DB.connect()
-        DB.create_tables([Parcel, Account, LienAuction])
+        DB.create_tables([Parcel, Account, LienAuction, county])
     if loaddata:
         # TODO Need to have more generic data loader
         grandco_parcels(Parcel, County)

@@ -35,6 +35,37 @@ class County(BaseModel):
     Parcel_ID = ForeignKeyField(Parcel, related_name='County')
     Co_Name = CharField()
 
+class Individuals(BaseModel):
+    """
+    This is a list of all owners
+    Jeffco ASTP600 file:
+        OWNNAM
+        OWNNAM2
+        OWNNAM3
+        OWNICO
+        DBA
+    """
+    Name = CharField() # First and last or company and DBA
+    Other = CharField() # Maybe use for DBA flag, Care of flag...
+
+
+class PropertieAddresses(BaseModel):
+    """
+    This is the list of all propertie addresses
+    """
+
+class OwnerAddresses(BaseModel):
+    """
+    All Owner (Mailing) Addresses
+    """
+
+class Owners(BaseModel):
+    """
+    This links owners with properties
+    """
+    Parcel_ID = ForeignKeyField(Parcel, related_name='The_Owners')
+    Owners = ForeignKeyField(Individuals, related_name='The_Owners')
+
 
 # db.connect()
 # db.create_tables([Parcel, Account, LienAuction, RawPages])

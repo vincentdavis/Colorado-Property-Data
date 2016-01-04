@@ -6,7 +6,6 @@ from flask_table import Table, Col
 #DB.connect()
 
 app = Flask(__name__)
-Bootstrap(app)
 
 @app.before_request
 def before_request():

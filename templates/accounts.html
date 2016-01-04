@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "index.html" %}
+{% block title %}Accounts{% endblock %}
+{% block head %}
+<h1> Colorado Accounts </h1>
+{% endblock %}
+{% block content %}
     {% block search_bar %}
         <form action="{{ url_for('hello_world') }}" class="navbar-form navbar-right" id="search-form" method="get" role="search">
           <div class="form-group">
@@ -12,26 +11,21 @@
           </div>
         </form>
     {% endblock %}
-    {% block body %}
-        <table>
+    <table  class="pure-table">
+        <thead>
             <td> Winning Bid </td>
             <td> Face Value </td>
-          <ul class=entries>
-              {% for e in entries %}
-                  <tr>
-                    <td> {{ e.Winning_Bid }} </td>
-                    <td> {{ e.Face_Value }} </td>
-                    <td> {{ e.Tax_Year }} </td>
-                    <td> {{ Parcel.get(Parcel.id == e.Parcel_ID).Parcel_ID }}</td>
-                  </tr>
-              {% endfor %}
-          </ul>
+            <td> Tax Year </td>
+            <td> Parcel Id </td>
+        </thead>
+                {% for e in entries %}
+                    <tr>
+                        <td> {{ e.Winning_Bid }} </td>
+                        <td> {{ e.Face_Value }} </td>
+                        <td> {{ e.Tax_Year }} </td>
+                        <td> {{ Parcel.get(Parcel.id == e.Parcel_ID).Parcel_ID }}</td>
+                    </tr>
+                {% endfor %}
+            </ul>
         </table>
-    {% endblock %}
-    <div id="footer">
-        {% block footer %}
-        &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>.
-        {% endblock %}
-    </div>
-</body>
-</html>
+{% endblock %}
