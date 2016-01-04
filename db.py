@@ -17,7 +17,7 @@ class Account(BaseModel):
     Parcel_ID = ForeignKeyField(Parcel, related_name='Account')
     Tax_Year = IntegerField()
     Tax_Type = CharField()
-    Effective_Date = DateField()
+    Effective_Date = DateField(null = True)
     Amount = FloatField()
     Balance = FloatField()
     Timestamp = DateTimeField(default=datetime.datetime.now)
@@ -30,6 +30,10 @@ class LienAuction(BaseModel):
     Tax_Year = IntegerField()
     Winning_Bid = FloatField()
     Timestamp = DateTimeField(default=datetime.datetime.now)
+
+class County(BaseModel):
+    Parcel_ID = ForeignKeyField(Parcel, related_name='County')
+    Co_Name = CharField()
 
 
 # db.connect()
