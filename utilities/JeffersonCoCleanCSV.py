@@ -18,8 +18,7 @@ import re
 def datefix(adate):
         if adate>1:
             try:
-                time.strptime(str(int(row)), "%m%d%Y")
-                return adate
+                return time.strptime(str(int(adate)), "%m%d%Y")
             except:
                 logging.warning('Fixed date on line ' + line[k])
                 raise
