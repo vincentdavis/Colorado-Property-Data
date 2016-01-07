@@ -1,5 +1,5 @@
 import os
-from db import DB, Parcel, Account, LienAuction, County
+from db import DB, Parcel, Account, LienAuction, Individuals, Owners, Addresses, OwnerAddresses
 from dataloaders import grandco_auction, grandco_account, grandco_parcels
 
 def DB_INIT(remove=False, loaddata=False):
@@ -15,9 +15,9 @@ def DB_INIT(remove=False, loaddata=False):
         except:
             pass
         DB.connect()
-        DB.create_tables([Parcel, Account, LienAuction, county])
+        DB.create_tables([Parcel, Account, LienAuction, Individuals, Owners, Addresses, OwnerAddresses])
     if loaddata:
         # TODO Need to have more generic data loader
-        grandco_parcels(Parcel, County)
+        grandco_parcels(Parcel)
         grandco_auction(Parcel, LienAuction)
         grandco_account(Parcel, Account)
