@@ -1,7 +1,6 @@
 from flask import Flask, render_template, g, request
 from db import DB, Parcel, Account, LienAuction
-from flask_bootstrap import Bootstrap
-from flask_table import Table, Col
+#from flask_table import Table, Col
 
 #DB.connect()
 
