@@ -109,8 +109,8 @@ class Addresses(BaseModel):
     Street2 = CharField(default=None, null=True)
     City = CharField(default=None, null=True)
     State = CharField(default=None, null=True)
-    Zipcode = int(default=None, null=True)
-    Zip4 = int(default=None, null=True)
+    Zipcode = IntegerField(default=None, null=True)
+    Zip4 = IntegerField(default=None, null=True)
     Timestamp = DateTimeField(default=datetime.datetime.now)
 
 class OwnerAddresses(BaseModel):
