@@ -21,9 +21,12 @@ def after_request(response):
 #     name = Col('Name')
 #     description = Col('Description')
 
-
 @app.route('/')
-def hello_world():
+def index():
+    return "Hello World"
+
+@app.route('/search')
+def search():
     search_query = request.args.get('q')
     if search_query:
         entries = LienAuction.select().where(LienAuction.Tax_Year == search_query)

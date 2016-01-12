@@ -1,6 +1,6 @@
 from peewee import *
 import datetime
-import pandas as pd
+# import pandas as pd
 
 DB = SqliteDatabase('ColoradoPropertyData.db')
 
