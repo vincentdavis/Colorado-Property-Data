@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content %}
     {% block search_bar %}
-        <form action="{{ url_for('hello_world') }}" class="navbar-form navbar-right" id="search-form" method="get" role="search">
+        <form action="{{ url_for('search') }}" class="navbar-form navbar-right" id="search-form" method="get" role="search">
           <div class="form-group">
             <input class="form-control" name="q" placeholder="Search" type="text" value="{% if search %}{{ search }}{% endif %}">
           </div>
