@@ -34,11 +34,11 @@ def search():
     # else:
     #     entries = LienAuction.select().where(LienAuction.Tax_Year == 2014)
 
-    # sample = [(s.Winning_Bid, s.Face_Value) for s in LienAuction.select().where(LienAuction.Tax_Year == 2014)]
-    #entries = LienAuction.select().where(LienAuction.Tax_Year == 2014)
+    #sample = [(s.Winning_Bid, s.Face_Value) for s in LienAuction.select().where(LienAuction.Tax_Year == 2014)]
+    entries = LienAuction.select().where(LienAuction.Tax_Year == 2013)
     #sample = [1,2,3,4,5]
-    #return render_template('accounts.html', entries=entries, Parcel=Parcel)
-    return "Hello World, search"
+    return render_template('accounts.html', entries=entries, Parcel=Parcel)
+    #return "Hello World, search"
 
 if __name__ == '__main__':
     #app.run()
