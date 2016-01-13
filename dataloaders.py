@@ -28,8 +28,7 @@ def grandco_parcels():
     results = pd.read_csv('data/GrandCo/All_Properties.csv')
     count = 0
     for p in results.Parcel_ID.unique():
-        prop = parceltable.create(Parcel_ID=p)
-        countytable(Parcel_ID=prop, Co_Name='Grand')
+        prop = Parcel.create(Parcel_ID=p, County='Grand')
         count += 1
     print('Imported {} Parcels'.format(count))
 
