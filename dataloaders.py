@@ -19,7 +19,12 @@ def GRANDCO(datafile):
     pd.read_csv(datafile, na_values=['nan', ''], index_col=False)
 
 
-def grandco_parcels(parceltable, countytable):
+def grandco_parcels():
+    from db import Parcel
+    try:
+        Parcel.create_table()
+    except:
+        pass
     results = pd.read_csv('data/GrandCo/All_Properties.csv')
     count = 0
     for p in results.Parcel_ID.unique():
