@@ -51,7 +51,7 @@ def grandco_auction():
     for p in dataframe.iterrows():
         data = p[1]
         try:
-            prop = Parcel.get(Parcel.Parcel_ID == data.Parcel_ID)
+            prop = Parcel.get(Parcel.Parcel_ID == data.Parcel_ID and Parcel.County == 'Grand')
         except Exception as e:
             if 'Instance matching query does not exist' in str(e):
                 prop = Parcel.create(Parcel_ID=data.Parcel_ID)
