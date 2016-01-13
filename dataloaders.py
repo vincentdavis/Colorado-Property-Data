@@ -33,27 +33,33 @@ def grandco_parcels():
     print('Imported {} Parcels'.format(count))
 
 
-def grandco_auction(parceltable, lienauction, dataframe):
+def grandco_auction():
     """
     Loads auction result data for grand county
     :param parceltable:
     :param lienauction:
     :return:
     """
+    from db import LienAuction, Parcel
+    try:
+        LienAuction.create_table()
+    except:
+        pass
+
     dataframe = pd.read_csv('data/GrandCo/All_Results.csv')
     count = 0
     for p in dataframe.iterrows():
         data = p[1]
         try:
-            prop = parceltable.get(parceltable.Parcel_ID == data.Parcel_ID)
+            prop = Parcel.get(Parcel.Parcel_ID == data.Parcel_ID)
         except Exception as e:
             if 'Instance matching query does not exist' in str(e):
-                prop = parceltable.create(Parcel_ID=data.Parcel_ID)
+                prop = Parcel.create(Parcel_ID=data.Parcel_ID)
             else:
                 print('The problem is {}'.format(data.Parcel_ID))
                 print(e)
 
-        lienauction.create(Parcel_ID=prop,
+        LienAuction.create(Parcel_ID=prop,
                            Bidder_ID=data.Bidder_ID,
                            Face_Value=data.Face_Value,
                            Name=data.Name,
