@@ -1,7 +1,7 @@
 from peewee import *
 import datetime
 from dbconfig_dev import *
-from dbconfig_pro import *
+#from dbconfig_pro import *
 
 # import pandas as pd
 
