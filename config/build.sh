@@ -11,8 +11,8 @@ popd > /dev/null
 
 HOME_DIR=$(dirname "$scrpit_current_dir")
 NGNX_ETC_DIR="/etc/nginx"
-NGNX_VIRTUALHOST_PATH="${NGNX_ETC_DIR}/sites-enabled/flask_uwsgi.conf"
-NGNX_SERVER_NAME="test" # change me
+NGNX_SERVER_NAME="co.heteroskedastic.com"
+NGNX_VIRTUALHOST_PATH="${NGNX_ETC_DIR}/sites-enabled/${NGNX_SERVER_NAME}_uwsgi.conf"
 UWSGI_ETC_DIR="/etc/uwsgi"
 UWSGI_LISTEN="127.0.0.1:8000"
 UWSGI_MODULE="codata"
@@ -31,8 +31,8 @@ install_requirements(){
 }
 
 feel_nginx_temaplate(){
-	sudo cp -f $scrpit_current_dir/nginx_template ${NGNX_ETC_DIR}/sites-available/flask_uwsgi.conf
-	sudo ln -sf ../sites-available/flask_uwsgi.conf ${NGNX_VIRTUALHOST_PATH}
+	sudo cp -f $scrpit_current_dir/nginx_template ${NGNX_ETC_DIR}/sites-available/${NGNX_SERVER_NAME}_uwsgi.conf
+	sudo ln -sf ../sites-available/${NGNX_SERVER_NAME}_uwsgi.conf ${NGNX_VIRTUALHOST_PATH}
 	sudo sed -i "s|%SERVER_NAME%|${NGNX_SERVER_NAME}|g" ${NGNX_VIRTUALHOST_PATH}
 	sudo sed -i "s|%ROOT_PATH%|${HOME_DIR}|g" ${NGNX_VIRTUALHOST_PATH}
 	sudo sed -i "s|%UWSGI_LISTEN%|${UWSGI_LISTEN}|g" ${NGNX_VIRTUALHOST_PATH}
