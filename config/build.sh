@@ -66,7 +66,9 @@ bash ${scrpit_current_dir}/Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/minicon
 export PATH=$HOME/miniconda3/bin:$PATH
 conda install -y anaconda-client
 # This is the virtual env to be used by the flask app
-conda create -n ${ENV_NAME} -y python=3.5 flask virtualenv
+conda create -n ${ENV_NAME} -y python=3.5 flask pymysql virtualenv
+source activate ${ENV_NAME}
+pip install peewee # I don't know, why peewee from anaconda repo conflicts with python3.5
 
 sudo systemctl disable uwsgi.service > /dev/null 2>&1
 sudo systemctl restart nginx.service > /dev/null 2>&1
